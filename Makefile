@@ -3,7 +3,7 @@ CC = gcc
 CFLAGS = -Wall -Werror -Wextra -g -I incl
 RM = rm -f
 
-SRC = src/main.c src/printing.c src/tables.c
+SRC = src/main.c src/printing.c src/tables.c src/infection
 OBJT = $(SRC:.c=.o)
 
 all: $(NAME)

