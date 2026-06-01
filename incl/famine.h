@@ -9,12 +9,13 @@
 # include <elf.h>
 # include <sys/stat.h>
 # include <sys/mman.h>
+# include <sys/types.h>
 # include <errno.h>
 # include <fcntl.h>
 # include <ctype.h>
 # include <pwd.h>
 
-# define SINGATURE "Famine version 1.0 (c)oded by davgalle"
+# define SIGNATURE "Famine version 1.0 (c)oded by davgalle"
 
 typedef struct s_sh_type
 {
@@ -61,6 +62,7 @@ typedef struct s_famine
     unsigned char   *elf;
     char            *strtab;
     char            *type_name;
+    void            *signd;
     Elf64_Ehdr      *header; 
     Elf64_Shdr      *sectab;
     struct passwd   *pwd;
@@ -81,6 +83,7 @@ int     ft_readelf(t_famine *famine);
 void    ft_printheader(t_famine *famine);
 void    ft_pointer_section_table(t_famine *famine);
 void    ft_pointer_strings_table(t_famine *famine);
-void    ft_detect_prev_infection(t_famine *famine);
+void    ft_infect(t_famine *famine);
+int     ft_detect_prev_infection(t_famine *famine);
 
 #endif
