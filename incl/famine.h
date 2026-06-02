@@ -25,7 +25,7 @@ typedef struct s_famine
     int             fd;
     int             type;
     int             valid;
-    const char      *file;
+    const char      *binary;
     char            *strtab;
     char            *type_name;
     void            *signd;

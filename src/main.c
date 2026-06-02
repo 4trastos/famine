@@ -32,7 +32,7 @@ int ft_readelf(t_famine *famine)
 
 int ft_checkarg(t_famine *famine)
 {
-    famine->fd = open(famine->file, O_RDONLY);
+    famine->fd = open(famine->binary, O_RDONLY);
     if (famine->fd == -1)
         return(errno == EISDIR ? -2 : -1);
     if (fstat(famine->fd, &famine->file_info) == -1)
@@ -65,7 +65,7 @@ int main()
             snprintf(path, sizeof(path), "%s/%s", ft_setdir(i), famine->readdir->d_name);
             if (famine->readdir->d_name[0] == '.')
                 continue;
-            famine->file = path; 
+            famine->binary = path; 
             if (ft_checkarg(famine))
                 continue;
             ft_pointer_section_table(famine);

