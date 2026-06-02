@@ -46,6 +46,6 @@ void    ft_pointer_section_table(t_famine *famine);
 void    ft_pointer_strings_table(t_famine *famine);
 void    ft_infect(t_famine *famine);
 int     ft_detect_prev_infection(t_famine *famine);
-char    *ft_setdir(int i);
+char    *ft_getdir(int i);
 
 #endif
