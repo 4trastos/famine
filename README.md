@@ -48,9 +48,7 @@ Famine/
 │   └── famine.h
 └── srcs/
     ├── main.c
-    ├── elf_parser.c
-    ├── infect.c
-    └── scanner.c
+    └── infection.c
 ```
 
 ##  Restricciones
