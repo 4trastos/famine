@@ -77,6 +77,14 @@ make
 
 Famine es la introducción práctica a la **virología informática**. Entender cómo un virus inyecta código en un binario sin romperlo es la base de todo lo que viene después — Pestilence (infección en cadena), War (detección), y Death (combinación avanzada).
 
+```bash
+docker run -it --rm \
+  -v "$(pwd):/workspace" \
+  -w /workspace \
+  debian:bullseye \
+  bash -c "apt update -qq && apt install -y build-essential binutils && bash"
+```
+
 ---
 
 *Proyecto realizado en el marco del cursus de ciberseguridad de 42Network Madrid.*
