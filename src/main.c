@@ -10,7 +10,6 @@ int ft_readelf(t_famine *famine)
     }
     if (famine->file_info.st_size >= 4 && famine->elf[0] == 0x7F && famine->elf[1] == 'E' && famine->elf[2] == 'L' && famine->elf[3] == 'F')
     {
-        famine->type = 1;
         famine->file_size = famine->file_info.st_size;
         famine->header = (Elf64_Ehdr *)famine->elf;
         if ((famine->header->e_ident[EI_CLASS] == ELFCLASS64) && (famine->header->e_machine == EM_X86_64))
