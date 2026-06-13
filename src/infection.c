@@ -36,7 +36,11 @@ int    ft_detect_prev_infection(t_famine *famine)
 {
     famine->signd = memmem(famine->elf, famine->file_size, SIGNATURE, strlen(SIGNATURE));
     if (famine->signd)
+    {
+        munmap(famine->elf, famine->file_size);
+        close(famine->fd);
         return (0);
+    }
     else
-        return (-1);
+        return (1);
 }

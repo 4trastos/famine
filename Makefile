@@ -1,6 +1,6 @@
-NAME = ft_famine
+NAME = Famine
 CC = gcc
-CFLAGS = -Wall -Werror -Wextra -g -I incl
+CFLAGS = -Wall -Werror -Wextra 
 RM = rm -f
 
 SRC = src/main.c src/infection.c

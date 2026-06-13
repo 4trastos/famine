@@ -23,7 +23,6 @@ typedef struct s_famine
 {
     size_t          file_size;
     int             fd;
-    int             valid;
     const char      *binary;
     char            *strtab;
     char            *type_name;
